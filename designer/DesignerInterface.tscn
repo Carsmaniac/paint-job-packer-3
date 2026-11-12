@@ -1,0 +1,522 @@
+[gd_scene format=3 uid="uid://bon2kychdfdpl"]
+
+[ext_resource type="Theme" uid="uid://2i35ywbubie7" path="res://simple-box-theme/pjp-dark/PJPDark.tres" id="1_0818m"]
+[ext_resource type="Script" uid="uid://d2bt11nqjiyw1" path="res://designer/EditLayerSplit.gd" id="2_dto8l"]
+[ext_resource type="Script" uid="uid://bkbk37spw4048" path="res://designer/DesignerInterface.gd" id="2_fu6ox"]
+[ext_resource type="Script" uid="uid://cmy4ad0pbkjvi" path="res://designer/ViewModel.gd" id="2_gxryq"]
+[ext_resource type="Script" uid="uid://dni1tcf3ra7xy" path="res://designer/ViewCanvas.gd" id="3_gxryq"]
+[ext_resource type="Script" uid="uid://wwbrhxqrb7mg" path="res://designer/Toolbar.gd" id="3_l64ss"]
+[ext_resource type="PackedScene" uid="uid://bst2ww1sansi0" path="res://designer/DesignerCanvas.tscn" id="3_t3brk"]
+[ext_resource type="Script" uid="uid://dh12vg3fbiuad" path="res://designer/ViewSwitcher.gd" id="4_gxryq"]
+[ext_resource type="Script" uid="uid://cwe1pjrsq1n6y" path="res://designer/DesignerCanvas.gd" id="7_ft5e4"]
+[ext_resource type="Script" uid="uid://fwahj12kbw6s" path="res://designer/LayerList.gd" id="10_88d6u"]
+[ext_resource type="PackedScene" uid="uid://rj5qt6afxl1r" path="res://designer/Layer.tscn" id="10_f6jw8"]
+[ext_resource type="Script" uid="uid://btajgdoh00cse" path="res://designer/ButtonSelect.gd" id="10_oa1j1"]
+[ext_resource type="Script" uid="uid://nhqnn382pqji" path="res://designer/TextButtons.gd" id="12_8ce8c"]
+[ext_resource type="Theme" uid="uid://dlrx2nnnj6pu6" path="res://simple-box-theme/pjp-dark/PJPDarkLayer.tres" id="12_oa1j1"]
+[ext_resource type="Script" uid="uid://b2vm8h0rr682u" path="res://designer/MoveButtons.gd" id="12_x3lof"]
+[ext_resource type="Theme" uid="uid://c1ttdpb3878g7" path="res://simple-box-theme/pjp-dark/PJPDarkLayerSeparator.tres" id="15_fu6ox"]
+[ext_resource type="PackedScene" uid="uid://bgcp2ug3tsli6" path="res://designer/LayerGroup.tscn" id="17_6k3x5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ce8c"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fu6ox"]
+viewport_path = NodePath("CroppedViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k3x5"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_fu6ox")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dto8l"]
+viewport_path = NodePath("EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel/FilteredViewport")
+
+[node name="DesignerInterface" type="Control" unique_id=1942051723]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0818m")
+script = ExtResource("2_fu6ox")
+metadata/_edit_horizontal_guides_ = [-61.0]
+
+[node name="BackgroundColour" type="ColorRect" parent="." unique_id=154655389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[node name="EditLayerSplit" type="HSplitContainer" parent="." unique_id=382633962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(1080)
+split_offset = 1080
+script = ExtResource("2_dto8l")
+right_panel_max_width = 300.0
+
+[node name="EditArea" type="Control" parent="EditLayerSplit" unique_id=280025054]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="TwoUp" type="HSplitContainer" parent="EditLayerSplit/EditArea" unique_id=1507496012]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(300)
+split_offset = 300
+
+[node name="ViewModel" type="SubViewportContainer" parent="EditLayerSplit/EditArea/TwoUp" unique_id=235436035]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+stretch = true
+script = ExtResource("2_gxryq")
+
+[node name="SubViewport" type="SubViewport" parent="EditLayerSplit/EditArea/TwoUp/ViewModel" unique_id=1811264340]
+handle_input_locally = false
+size = Vector2i(300, 759)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="PreviewModel" type="Node3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport" unique_id=1024880228]
+
+[node name="FilteredViewport" type="SubViewport" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel" unique_id=12896033]
+unique_name_in_owner = true
+canvas_cull_mask = 4294967293
+size = Vector2i(8192, 8192)
+
+[node name="CameraOrbiter" type="Node3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel" unique_id=1361442022]
+transform = Transform3D(-0.9145014, 0, -0.40458304, 0, 1, 0, 0.40458304, 0, -0.9145014, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel/CameraOrbiter" unique_id=1002652522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8.583934)
+fov = 51.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel/CameraOrbiter/Camera3D" unique_id=553643235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+light_energy = 4.28
+omni_range = 26.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel/CameraOrbiter/Camera3D" unique_id=270843349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+light_energy = 4.28
+omni_range = 26.0
+
+[node name="VehicleModel" type="MeshInstance3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel" unique_id=1695738561]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7146196)
+mesh = SubResource("BoxMesh_8ce8c")
+surface_material_override/0 = SubResource("StandardMaterial3D_6k3x5")
+
+[node name="DLCPartModel" type="MeshInstance3D" parent="EditLayerSplit/EditArea/TwoUp/ViewModel/SubViewport/PreviewModel" unique_id=1615316609]
+unique_name_in_owner = true
+
+[node name="ViewCanvas" type="SubViewportContainer" parent="EditLayerSplit/EditArea/TwoUp" unique_id=1512129254]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+stretch = true
+script = ExtResource("3_gxryq")
+
+[node name="SubViewport" type="SubViewport" parent="EditLayerSplit/EditArea/TwoUp/ViewCanvas" unique_id=1690901565]
+handle_input_locally = false
+size = Vector2i(520, 759)
+render_target_update_mode = 4
+
+[node name="DesignerCanvas" parent="EditLayerSplit/EditArea/TwoUp/ViewCanvas/SubViewport" unique_id=1156557595 instance=ExtResource("3_t3brk")]
+unique_name_in_owner = true
+script = ExtResource("7_ft5e4")
+
+[node name="CanvasViewportContainer" parent="EditLayerSplit/EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas" index="0" unique_id=41392612]
+offset_right = 8192.0
+offset_bottom = 8192.0
+
+[node name="CanvasViewport" parent="EditLayerSplit/EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas/CanvasViewportContainer" index="0" unique_id=61003486]
+size = Vector2i(8192, 8192)
+
+[node name="LeftPanel" type="Panel" parent="EditLayerSplit/EditArea" unique_id=1915631464]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 46.0
+grow_vertical = 2
+
+[node name="Toolbar" type="VBoxContainer" parent="EditLayerSplit/EditArea/LeftPanel" unique_id=904101171]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 10.0
+offset_right = 43.0
+offset_bottom = -3.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+script = ExtResource("3_l64ss")
+
+[node name="ToolMove" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=1813952138]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Move
+Shortcut: V"
+toggle_mode = true
+button_pressed = true
+text = "Mo"
+
+[node name="ToolBrush" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=1242664334]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Brush
+Shortcut: B"
+disabled = true
+toggle_mode = true
+text = "Br"
+
+[node name="ToolEraser" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=2018208953]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Eraser
+Shortcut: E"
+disabled = true
+toggle_mode = true
+text = "Er"
+
+[node name="ToolShape" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=1318769923]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Shape
+Shortcut: U"
+toggle_mode = true
+text = "Sh"
+
+[node name="ToolText" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=2124195899]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Text
+Shortcut: T"
+toggle_mode = true
+text = "Te"
+
+[node name="ToolHand" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=1574784453]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Hand
+Shortcut: H"
+toggle_mode = true
+text = "Ha"
+
+[node name="Button8" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=735924308]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+toggle_mode = true
+
+[node name="Button9" type="Button" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=1909526754]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+toggle_mode = true
+
+[node name="ColourPadding" type="Control" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=28215110]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ColourPrimary" type="ColorPickerButton" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=498311146]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Primary Colour"
+edit_intensity = false
+
+[node name="ColourSecondary" type="ColorPickerButton" parent="EditLayerSplit/EditArea/LeftPanel/Toolbar" unique_id=642481162]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Secondary Colour"
+color = Color(1, 1, 1, 1)
+edit_intensity = false
+
+[node name="TopPanel" type="Panel" parent="EditLayerSplit/EditArea" unique_id=1733788061]
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 46.0
+offset_bottom = 30.0
+grow_horizontal = 2
+
+[node name="ToolButtons" type="HBoxContainer" parent="EditLayerSplit/EditArea/TopPanel" unique_id=1411154465]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoveButtons" type="HBoxContainer" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons" unique_id=164166152]
+visible = false
+layout_mode = 2
+script = ExtResource("12_x3lof")
+
+[node name="AutoSelect" type="CheckBox" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/MoveButtons" unique_id=158408456]
+layout_mode = 2
+text = "Auto Select"
+
+[node name="Snap" type="CheckBox" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/MoveButtons" unique_id=1355192226]
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Snap"
+
+[node name="TransformControls" type="CheckBox" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/MoveButtons" unique_id=1056441065]
+layout_mode = 2
+button_pressed = true
+text = "Show Transform Controls"
+
+[node name="ShapeButtons" type="HBoxContainer" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons" unique_id=373798830]
+layout_mode = 2
+
+[node name="ShapeSelect" type="OptionButton" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=1986816064]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Rectangle"
+popup/item_0/id = 0
+popup/item_1/text = "Ellipse"
+popup/item_1/id = 1
+
+[node name="CornerRadiusSpacer" type="Control" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=439553290]
+layout_mode = 2
+
+[node name="CornerRadiusLabel" type="Label" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=118529902]
+layout_mode = 2
+text = "Corner radius"
+
+[node name="CornerRadius" type="SpinBox" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=242223925]
+layout_mode = 2
+max_value = 1000.0
+
+[node name="ShapeColourLabel" type="Label" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=1808364611]
+layout_mode = 2
+text = "Fill colour"
+
+[node name="ShapeColour" type="ColorPickerButton" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/ShapeButtons" unique_id=1540914431]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("12_oa1j1")
+
+[node name="TextButtons" type="HBoxContainer" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons" unique_id=33357878]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 9
+script = ExtResource("12_8ce8c")
+
+[node name="FontDropdown" type="OptionButton" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=2133395167]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="FontWeightSpacer" type="Control" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=1640647688]
+layout_mode = 2
+
+[node name="FontWeightLabel" type="Label" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=967375620]
+layout_mode = 2
+text = "Font weight"
+
+[node name="FontWeight" type="HSlider" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=1998312293]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 1000.0
+step = 100.0
+value = 400.0
+
+[node name="FontSizeSpacer" type="Control" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=2027980134]
+layout_mode = 2
+
+[node name="FontSizeLabel" type="Label" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=518510175]
+layout_mode = 2
+text = "Font size"
+
+[node name="FontSize" type="SpinBox" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=807026089]
+layout_mode = 2
+min_value = 6.0
+max_value = 520.0
+value = 72.0
+
+[node name="TextColourLabel" type="Label" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=1754198410]
+layout_mode = 2
+text = "Text colour"
+
+[node name="TextColour" type="ColorPickerButton" parent="EditLayerSplit/EditArea/TopPanel/ToolButtons/TextButtons" unique_id=1568358764]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("12_oa1j1")
+
+[node name="RightPanel" type="Panel" parent="EditLayerSplit" unique_id=3673591]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ViewSwitcher" type="OptionButton" parent="EditLayerSplit/RightPanel" unique_id=1880620143]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 36.0
+grow_horizontal = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Model Left"
+popup/item_0/id = 2
+popup/item_1/text = "Model Right"
+popup/item_1/id = 1
+script = ExtResource("4_gxryq")
+
+[node name="ButtonSelect" type="Button" parent="EditLayerSplit/RightPanel" unique_id=479063609]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 46.0
+offset_right = -3.0
+offset_bottom = 84.0
+grow_horizontal = 2
+text = "Select Model"
+script = ExtResource("10_oa1j1")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditLayerSplit/RightPanel" unique_id=1430981041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 87.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LayerList" type="VBoxContainer" parent="EditLayerSplit/RightPanel/ScrollContainer" unique_id=1720164249]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("10_88d6u")
+
+[node name="Separator4" type="Panel" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=719663387]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("15_fu6ox")
+
+[node name="Layer" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=234734521 node_paths=PackedStringArray("linked_node") instance=ExtResource("10_f6jw8")]
+layout_mode = 2
+linked_node = NodePath("../../../../EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas/CanvasViewportContainer/CanvasViewport/LayerNodes/TempModel")
+layer_name = "Truck Image"
+layer_type = "image"
+
+[node name="Separator" type="Panel" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=1875374441]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("15_fu6ox")
+
+[node name="Layer2" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=1636741636 node_paths=PackedStringArray("linked_node") instance=ExtResource("10_f6jw8")]
+layout_mode = 2
+linked_node = NodePath("../../../../EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas/CanvasViewportContainer/CanvasViewport/LayerNodes/Label")
+layer_name = "Here is some text"
+layer_type = "text"
+
+[node name="Separator2" type="Panel" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=571497919]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("15_fu6ox")
+
+[node name="Layer3" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=115983831 node_paths=PackedStringArray("linked_node") instance=ExtResource("10_f6jw8")]
+layout_mode = 2
+linked_node = NodePath("../../../../EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas/CanvasViewportContainer/CanvasViewport/LayerNodes/RedRect")
+layer_name = "Rectyboi"
+layer_type = "rect"
+
+[node name="Separator3" type="Panel" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=272974401]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("15_fu6ox")
+
+[node name="LayerGroup" parent="EditLayerSplit/RightPanel/ScrollContainer/LayerList" unique_id=490016677 instance=ExtResource("17_6k3x5")]
+layout_mode = 2
+
+[node name="LayerControlButtons" type="HBoxContainer" parent="EditLayerSplit/RightPanel" unique_id=337002374]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -43.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="ButtonNew" type="Button" parent="EditLayerSplit/RightPanel/LayerControlButtons" unique_id=269709168]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "New Layer"
+text = "+"
+
+[node name="ButtonDelete" type="Button" parent="EditLayerSplit/RightPanel/LayerControlButtons" unique_id=1579757289]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Delete Layer"
+text = "X"
+
+[node name="ButtonRasterise" type="Button" parent="EditLayerSplit/RightPanel/LayerControlButtons" unique_id=672519628]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+tooltip_text = "Rasterise Layer"
+text = "✏"
+
+[node name="ButtonGroup" type="Button" parent="EditLayerSplit/RightPanel/LayerControlButtons" unique_id=1738051009]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+tooltip_text = "Group Layers"
+text = "⃞"
+
+[node name="CroppedViewport" type="SubViewport" parent="." unique_id=1576463100]
+unique_name_in_owner = true
+size = Vector2i(8192, 8192)
+
+[node name="CropTexture" type="TextureRect" parent="CroppedViewport" unique_id=568516449]
+unique_name_in_owner = true
+offset_left = -4096.0
+offset_top = -4096.0
+offset_right = 4096.0
+offset_bottom = 4096.0
+scale = Vector2(2, 2)
+texture = SubResource("ViewportTexture_dto8l")
+
+[editable path="EditLayerSplit/EditArea/TwoUp/ViewCanvas/SubViewport/DesignerCanvas"]

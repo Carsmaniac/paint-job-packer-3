@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://rj5qt6afxl1r"]
+
+[ext_resource type="Theme" uid="uid://dlrx2nnnj6pu6" path="res://simple-box-theme/pjp-dark/PJPDarkLayer.tres" id="1_w8lta"]
+[ext_resource type="Script" uid="uid://dodq8o2tb4gi8" path="res://designer/Layer.gd" id="2_s1top"]
+[ext_resource type="Texture2D" uid="uid://ckw3svi1syg02" path="res://designer/temp-model.jpg" id="3_ltint"]
+
+[node name="Layer" type="Panel" unique_id=234734521]
+custom_minimum_size = Vector2(139, 29)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme = ExtResource("1_w8lta")
+script = ExtResource("2_s1top")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1975219756]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 3.0
+offset_right = 49.0
+offset_bottom = 26.0
+texture = ExtResource("3_ltint")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1498602194]
+layout_mode = 1
+offset_left = 52.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 26.0
+text = "Layer 1"
+vertical_alignment = 1
+
+[node name="ButtonUp" type="Button" parent="." unique_id=1144750321]
+visible = false
+layout_mode = 0
+offset_left = 153.0
+offset_top = 7.0
+offset_right = 179.0
+offset_bottom = 34.0
+tooltip_text = "Move Up"
+text = "↑"
+
+[node name="ButtonDown" type="Button" parent="." unique_id=399455746]
+visible = false
+layout_mode = 0
+offset_left = 153.0
+offset_top = 37.0
+offset_right = 179.0
+offset_bottom = 64.0
+tooltip_text = "Move Down"
+text = "↓"
+
+[node name="ButtonHide" type="Button" parent="." unique_id=621508624]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 26.0
+offset_bottom = 26.0
+tooltip_text = "Show/Hide"
+text = "👁"
+
+[node name="ButtonDelete" type="Button" parent="." unique_id=1739734587]
+visible = false
+layout_mode = 0
+offset_left = 187.0
+offset_top = 26.0
+offset_right = 212.0
+offset_bottom = 53.0
+tooltip_text = "Delete"
+text = "X"
+
+[node name="RenameWindow" type="Window" parent="." unique_id=2072066201]
+oversampling_override = 1.0
+title = "Rename Layer"
+initial_position = 2
+size = Vector2i(300, 150)
+visible = false
+
+[node name="LineEdit" type="LineEdit" parent="RenameWindow" unique_id=155462925]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -23.0
+offset_right = 136.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="RenameWindow" unique_id=1711496211]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 18.0
+offset_right = 83.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Enter new layer name"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="RenameWindow" unique_id=563713578]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -51.0
+offset_right = 36.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Okay"
+
+[node name="ChangeTextWindow" type="Window" parent="." unique_id=1954184076]
+oversampling_override = 1.0
+title = "Change Text"
+initial_position = 2
+size = Vector2i(300, 200)
+visible = false
+
+[node name="LineEdit" type="TextEdit" parent="ChangeTextWindow" unique_id=1159957259]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -49.0
+offset_right = 136.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ChangeTextWindow" unique_id=496782210]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 18.0
+offset_right = 83.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Enter new text"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ChangeTextWindow" unique_id=19126414]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -51.0
+offset_right = 36.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Okay"
+
+[connection signal="pressed" from="ButtonDelete" to="." method="delete"]

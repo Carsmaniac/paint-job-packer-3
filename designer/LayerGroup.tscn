@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bgcp2ug3tsli6"]
+
+[ext_resource type="Theme" uid="uid://dlrx2nnnj6pu6" path="res://simple-box-theme/pjp-dark/PJPDarkLayer.tres" id="1_ll5ah"]
+[ext_resource type="Script" uid="uid://3rvbmn0k7de5" path="res://designer/LayerGroup.gd" id="2_unp5c"]
+
+[node name="LayerGroup" type="Panel" unique_id=234734521]
+custom_minimum_size = Vector2(139, 29)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme = ExtResource("1_ll5ah")
+script = ExtResource("2_unp5c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=340442524]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 43.0
+theme_override_constants/separation = 0
+
+[node name="GroupInfo" type="HBoxContainer" parent="VBoxContainer" unique_id=1803403300]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="ButtonHide" type="Button" parent="VBoxContainer/GroupInfo" unique_id=621508624]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+tooltip_text = "Show/Hide"
+text = "👁"
+
+[node name="Label" type="Label" parent="VBoxContainer/GroupInfo" unique_id=1498602194]
+layout_mode = 2
+text = "Group 1"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1530939562]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Indent" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=1415113380]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="ChildLayerInstances" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=633859457]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RenameWindow" type="Window" parent="." unique_id=2072066201]
+oversampling_override = 1.0
+title = "Rename Layer"
+initial_position = 2
+size = Vector2i(300, 150)
+visible = false
+
+[node name="LineEdit" type="LineEdit" parent="RenameWindow" unique_id=155462925]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -23.0
+offset_right = 136.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="RenameWindow" unique_id=1711496211]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 18.0
+offset_right = 83.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Enter new layer name"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="RenameWindow" unique_id=563713578]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -51.0
+offset_right = 36.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Okay"

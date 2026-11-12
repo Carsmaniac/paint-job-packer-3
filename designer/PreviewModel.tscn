@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b42jqutl0sg7v"]
+
+[node name="PreviewModel" type="Node3D" unique_id=1024880228]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=12896033]
+
+[node name="CameraOrbiter" type="Node3D" parent="." unique_id=1361442022]
+transform = Transform3D(-0.9145014, 0, -0.40458304, 0, 1, 0, 0.40458304, 0, -0.9145014, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrbiter" unique_id=1002652522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8.583934)
+fov = 51.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CameraOrbiter/Camera3D" unique_id=553643235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+light_energy = 4.28
+omni_range = 26.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CameraOrbiter/Camera3D" unique_id=270843349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+light_energy = 4.28
+omni_range = 26.0
+
+[node name="VehicleModel" type="MeshInstance3D" parent="." unique_id=1695738561]
